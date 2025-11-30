@@ -1,0 +1,41 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* 
+      This is the magic fix. It reserves space for the scrollbar 
+      even when overflow is hidden, preventing the page from jumping/flashing. 
+    */
+    scrollbar-gutter: stable;
+  }
+}
+
+@layer utilities {
+  .animate-scroll-left {
+    animation: scrollLeft 30s linear infinite;
+  }
+  .animate-scroll-right {
+    animation: scrollRight 30s linear infinite;
+  }
+  .animate-drag-hand {
+    animation: dragHand 2s ease-in-out infinite;
+  }
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes dragHand {
+  0%, 100% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+}
