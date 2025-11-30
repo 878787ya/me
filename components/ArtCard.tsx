@@ -3,17 +3,47 @@ import { Maximize2 } from 'lucide-react';
 import { ExpandedModal } from './ExpandedModal';
 
 const artPieces = [
-    { src: 'assets/art/art-01.webp', rot: '-rotate-6' },
-    { src: 'assets/art/art-02.webp', rot: 'rotate-3' },
-    { src: 'assets/art/art-03.webp', rot: '-rotate-2' },
-    { src: 'assets/art/art-04.webp', rot: 'rotate-6' },
-    { src: 'assets/art/art-05.webp', rot: '-rotate-3' },
-    { src: 'assets/art/art-06.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-01.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-02.webp', rot: 'rotate-3' },
+  { src: 'assets/art/art-03.webp', rot: '-rotate-2' },
+  { src: 'assets/art/art-04.webp', rot: 'rotate-6' },
+  { src: 'assets/art/art-05.webp', rot: '-rotate-3' },
+  { src: 'assets/art/art-06.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-07.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-08.webp', rot: 'rotate-3' },
+  { src: 'assets/art/art-09.webp', rot: '-rotate-2' },
+  { src: 'assets/art/art-10.webp', rot: 'rotate-6' },
+  { src: 'assets/art/art-11.webp', rot: '-rotate-3' },
+  { src: 'assets/art/art-12.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-13.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-14.webp', rot: 'rotate-3' },
+  { src: 'assets/art/art-15.webp', rot: '-rotate-2' },
+  { src: 'assets/art/art-16.webp', rot: 'rotate-6' },
+  { src: 'assets/art/art-17.webp', rot: '-rotate-3' },
+  { src: 'assets/art/art-18.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-19.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-20.webp', rot: 'rotate-3' },
+  { src: 'assets/art/art-21.webp', rot: '-rotate-2' },
+  { src: 'assets/art/art-22.webp', rot: 'rotate-6' },
+  { src: 'assets/art/art-23.webp', rot: '-rotate-3' },
+  { src: 'assets/art/art-24.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-25.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-26.webp', rot: 'rotate-3' },
+  { src: 'assets/art/art-27.webp', rot: '-rotate-2' },
+  { src: 'assets/art/art-28.webp', rot: 'rotate-6' },
+  { src: 'assets/art/art-29.webp', rot: '-rotate-3' },
+  { src: 'assets/art/art-30.webp', rot: 'rotate-1' },
+  { src: 'assets/art/art-31.webp', rot: '-rotate-6' },
+  { src: 'assets/art/art-32.webp', rot: 'rotate-3' },
 ];
 
 export const ArtCard: React.FC = () => {
   const [isScattered, setIsScattered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Helper: Shift array for Row 3 variety
+  const half = Math.floor(artPieces.length / 2);
+  const shiftedPieces = [...artPieces.slice(half), ...artPieces.slice(0, half)];
 
   return (
     <>
@@ -32,13 +62,13 @@ export const ArtCard: React.FC = () => {
            <Maximize2 size={16} className="text-gray-400 group-hover:text-blue-500" />
         </div>
 
-        {/* Pile Effect */}
+        {/* Pile Effect (Preview: Only show first 3) */}
         <div className="relative w-24 h-32 flex items-center justify-center mt-2">
           {artPieces.slice(0, 3).map((img, i) => (
               <img 
                   key={i}
                   src={img.src} 
-                  alt="Art"
+                  alt="Art Preview"
                   style={{ zIndex: 10 + i * 10 }}
                   className={`absolute w-full h-full object-cover rounded-lg border-4 border-white shadow-lg transition-all duration-500 ease-out 
                       ${isScattered 
@@ -66,34 +96,53 @@ export const ArtCard: React.FC = () => {
             {/* Infinite Marquee Rows - Smaller images, 3 rows */}
             <div className="space-y-6 md:space-y-8 rotate-[-2deg] scale-105">
                 
-                {/* Row 1: Left to Right */}
+                {/* Row 1: Left to Right (Normal Order) */}
                 <div className="flex w-full overflow-hidden">
                     <div className="flex animate-scroll-left w-max gap-4 md:gap-6 px-4 hover:[animation-play-state:paused]">
-                        {[...artPieces, ...artPieces, ...artPieces].map((img, i) => (
+                        {/* Repeat 2 times is enough for 32 images */}
+                        {[...artPieces, ...artPieces].map((img, i) => (
                              <div key={i} className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-white rounded-xl shadow-md border-4 border-white overflow-hidden transform transition-transform hover:scale-110 hover:z-20 hover:shadow-xl">
-                                <img src={img.src} className="w-full h-full object-cover" />
+                                <img 
+                                    src={img.src} 
+                                    className="w-full h-full object-cover" 
+                                    loading="lazy" 
+                                    decoding="async"
+                                    alt="Art Piece"
+                                />
                              </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Row 2: Right to Left */}
+                {/* Row 2: Right to Left (Reverse Order) */}
                 <div className="flex w-full overflow-hidden">
                     <div className="flex animate-scroll-right w-max gap-4 md:gap-6 px-4 hover:[animation-play-state:paused]">
-                        {[...artPieces, ...artPieces, ...artPieces].reverse().map((img, i) => (
+                        {[...artPieces, ...artPieces].reverse().map((img, i) => (
                              <div key={i} className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-white rounded-xl shadow-md border-4 border-white overflow-hidden transform transition-transform hover:scale-110 hover:z-20 hover:shadow-xl">
-                                <img src={img.src} className="w-full h-full object-cover" />
+                                <img 
+                                    src={img.src} 
+                                    className="w-full h-full object-cover" 
+                                    loading="lazy" 
+                                    decoding="async"
+                                    alt="Art Piece"
+                                />
                              </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Row 3: Left to Right (New) */}
+                {/* Row 3: Left to Right (Shifted Order for Variety) */}
                  <div className="flex w-full overflow-hidden">
                     <div className="flex animate-scroll-left w-max gap-4 md:gap-6 px-4 hover:[animation-play-state:paused]">
-                        {[...artPieces, ...artPieces, ...artPieces].map((img, i) => (
+                        {[...shiftedPieces, ...shiftedPieces].map((img, i) => (
                              <div key={i} className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-white rounded-xl shadow-md border-4 border-white overflow-hidden transform transition-transform hover:scale-110 hover:z-20 hover:shadow-xl">
-                                <img src={img.src} className="w-full h-full object-cover" />
+                                <img 
+                                    src={img.src} 
+                                    className="w-full h-full object-cover" 
+                                    loading="lazy" 
+                                    decoding="async"
+                                    alt="Art Piece"
+                                />
                              </div>
                         ))}
                     </div>
