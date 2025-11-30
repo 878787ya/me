@@ -3,12 +3,12 @@ import { Maximize2 } from 'lucide-react';
 import { ExpandedModal } from './ExpandedModal';
 
 const artPieces = [
-    { src: 'public/assets/art/art-01.webp', rot: '-rotate-6' },
-    { src: 'public/assets/art/art-02.webp', rot: 'rotate-3' },
-    { src: 'public/assets/art/art-03.webp', rot: '-rotate-2' },
-    { src: 'public/assets/art/art-04.webp', rot: 'rotate-6' },
-    { src: 'public/assets/art/art-05.webp', rot: '-rotate-3' },
-    { src: 'public/assets/art/art-06.webp', rot: 'rotate-1' },
+    { src: 'assets/art/art-01.webp', rot: '-rotate-6' },
+    { src: 'assets/art/art-02.webp', rot: 'rotate-3' },
+    { src: 'assets/art/art-03.webp', rot: '-rotate-2' },
+    { src: 'assets/art/art-04.webp', rot: 'rotate-6' },
+    { src: 'assets/art/art-05.webp', rot: '-rotate-3' },
+    { src: 'assets/art/art-06.webp', rot: 'rotate-1' },
 ];
 
 export const ArtCard: React.FC = () => {
