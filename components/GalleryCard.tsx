@@ -4,14 +4,16 @@ import { ExpandedModal } from './ExpandedModal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards, Autoplay } from 'swiper/modules';
 
-// Mock Posters
+// --- 請在這裡新增您的海報 ---
 const posters = [
-    { src: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=600&q=80', title: 'Neon Nights' },
-    { src: 'https://images.unsplash.com/photo-1563207153-f403bf28390b?w=600&q=80', title: 'Abstract Flow' },
-    { src: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600&q=80', title: 'Glass Morph' },
-    { src: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&q=80', title: 'Geometric' },
-    { src: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80', title: 'Retro Wave' },
-    { src: 'https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=600&q=80', title: 'Cyber Punk' },
+    { src: 'assets/posters/poster-01.webp', title: 'Poster 1' },
+    { src: 'assets/posters/poster-02.webp', title: 'Poster 2' },
+    { src: 'assets/posters/poster-03.webp', title: 'Poster 3' },
+    { src: 'assets/posters/poster-04.webp', title: 'Poster 4' },
+    { src: 'assets/posters/poster-05.webp', title: 'Poster 5' },
+    { src: 'assets/posters/poster-06.webp', title: 'Poster 6' },
+    
+
 ];
 
 export const GalleryCard: React.FC = () => {
@@ -31,7 +33,7 @@ export const GalleryCard: React.FC = () => {
             </div>
          </div>
 
-         {/* Swiper Preview */}
+         {/* Swiper Preview - Shows first 5 posters */}
          <div className="flex-1 w-full h-full rounded-xl overflow-hidden mt-2">
             <Swiper
                 effect={'cards'}
@@ -40,9 +42,14 @@ export const GalleryCard: React.FC = () => {
                 autoplay={{ delay: 2500, disableOnInteraction: false }}
                 className="w-full h-full"
             >
-                {posters.slice(0, 4).map((p, i) => (
-                    <SwiperSlide key={i} className="rounded-xl overflow-hidden">
-                        <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
+                {posters.slice(0, 5).map((p, i) => (
+                    <SwiperSlide key={i} className="rounded-xl overflow-hidden bg-gray-100">
+                        <img 
+                            src={p.src} 
+                            alt={p.title} 
+                            loading="lazy"
+                            className="w-full h-full object-cover" 
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -58,14 +65,21 @@ export const GalleryCard: React.FC = () => {
                 </div>
 
                 {/* Masonry Layout using CSS Columns */}
+                {/* This layout handles different aspect ratios (portrait/landscape) automatically */}
                 <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
                     {posters.map((p, i) => (
                         <div 
                             key={i} 
                             onClick={() => setZoomImage(p.src)}
-                            className="break-inside-avoid rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
+                            className="break-inside-avoid rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
                         >
-                            <img src={p.src} alt={p.title} className="w-full h-auto block transform group-hover:scale-105 transition-transform duration-500" />
+                            <img 
+                                src={p.src} 
+                                alt={p.title} 
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-auto block transform group-hover:scale-105 transition-transform duration-500" 
+                            />
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                 <div className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white">
@@ -80,11 +94,15 @@ export const GalleryCard: React.FC = () => {
 
         {/* Simple Lightbox Overlay */}
         {zoomImage && (
-            <div className="fixed inset-0 z-[150] bg-black/95 flex items-center justify-center p-4" onClick={() => setZoomImage(null)}>
+            <div className="fixed inset-0 z-[150] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out" onClick={() => setZoomImage(null)}>
                 <button className="absolute top-6 right-6 text-white/70 hover:text-white">
                     <X size={32} />
                 </button>
-                <img src={zoomImage} className="max-w-full max-h-full object-contain rounded shadow-2xl" onClick={(e) => e.stopPropagation()} />
+                <img 
+                    src={zoomImage} 
+                    className="max-w-full max-h-full object-contain rounded shadow-2xl" 
+                    onClick={(e) => e.stopPropagation()} 
+                />
             </div>
         )}
       </ExpandedModal>

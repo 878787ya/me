@@ -15,10 +15,10 @@
 
 @layer utilities {
   .animate-scroll-left {
-    animation: scrollLeft 30s linear infinite;
+    animation: scrollLeft 50s linear infinite;
   }
   .animate-scroll-right {
-    animation: scrollRight 30s linear infinite;
+    animation: scrollRight 50s linear infinite;
   }
   .animate-drag-hand {
     animation: dragHand 2s ease-in-out infinite;
