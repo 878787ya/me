@@ -3,12 +3,12 @@ import { Maximize2 } from 'lucide-react';
 import { ExpandedModal } from './ExpandedModal';
 
 const artPieces = [
-    { src: '/Users/tbg/Downloads/作品集網頁g/assets/art/art-01.webp', rot: '-rotate-6' },
-    { src: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500', rot: 'rotate-3' },
-    { src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500', rot: '-rotate-2' },
-    { src: 'https://images.unsplash.com/photo-1605106702734-205df224ecce?w=500', rot: 'rotate-6' },
-    { src: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=500', rot: '-rotate-3' },
-    { src: 'https://images.unsplash.com/photo-1566493720760-45731ee9f029?w=500', rot: 'rotate-1' },
+    { src: 'public/assets/art/art-01.webp', rot: '-rotate-6' },
+    { src: 'public/assets/art/art-02.webp', rot: 'rotate-3' },
+    { src: 'public/assets/art/art-03.webp', rot: '-rotate-2' },
+    { src: 'public/assets/art/art-04.webp', rot: 'rotate-6' },
+    { src: 'public/assets/art/art-05.webp', rot: '-rotate-3' },
+    { src: 'public/assets/art/art-06.webp', rot: 'rotate-1' },
 ];
 
 export const ArtCard: React.FC = () => {
