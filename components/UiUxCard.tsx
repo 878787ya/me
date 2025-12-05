@@ -1,9 +1,10 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Project } from '../types';
 import { Maximize2, Smartphone, Layout, ArrowRight, ExternalLink, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { ExpandedModal } from './ExpandedModal';
 
-// --- DATA (Kept same as before) ---
+// --- DATA ---
 const projects: Project[] = [
   {
     id: 'app-1',
@@ -12,8 +13,13 @@ const projects: Project[] = [
     description: '一款強調易讀性與低操作門檻的防詐應用。採用卡片式介面與去線條化排版，建立清晰而有呼吸感的資訊層級。整體設計導入跨年齡友善的 Inclusive System，支援多主題與動態字級。',
     tags: ['Social Safety Utility', 'Mobile', 'UI/UX Design', 'Accessibility'],
     images: [
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=800&q=80',
+      'assets/ui/anti-scam/01.webp',
+      'assets/ui/anti-scam/02.webp',
+      'assets/ui/anti-scam/03.webp',
+      'assets/ui/anti-scam/04.webp',
+      'assets/ui/anti-scam/05.webp',
+      'assets/ui/anti-scam/06.webp',
+      'assets/ui/anti-scam/07.webp',
     ],
     features: [
       '跨年齡可讀介面: 多主題（溫和、高對比）＋字級調整，提升長輩閱讀體驗。', 
@@ -28,8 +34,8 @@ const projects: Project[] = [
     description: '一款以「快速理解」與「最低操作成本」為目標的日常防詐工具。採用溫和視覺與小幫手角色減輕資訊焦慮，並以最短動線規劃操作流程。',
     tags: ['Social Safety Utility', 'Mobile', 'UI/UX Design', 'Front-end Design'],
     images: [
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
+      'assets/ui/scampet/01.webp',
+      'assets/ui/scampet/02.webp',
     ],
     features: [
       '一眼掌握風險: 首頁滾動提醒＋簡化圖表，立即吸收防詐重點。',
@@ -44,11 +50,11 @@ const projects: Project[] = [
     description: '一款用於快速傳遞祝福訊息的互動式網頁。透過極簡排版與柔和視覺，引導使用者在最短時間內完成送出祝福的操作。整體設計專注於「單頁流暢性」與「資訊直覺理解」，讓所有年齡層都能輕鬆使用。',
     tags: ['Interactive Web', 'Front-end Design', 'UI Layout'],
     images: [
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80',
-      'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&q=80',
-      'https://images.unsplash.com/photo-1481487484168-9b930d5b7d9f?w=400&q=80',
+      'assets/ui/blessing/01.webp',
+      'assets/ui/blessing/02.webp',
+      'assets/ui/blessing/03.webp',
+      'assets/ui/blessing/04.webp',
+      'assets/ui/blessing/05.webp',
     ],
     features: [
         '聚焦單頁體驗: 將所有功能整合在同一頁面，操作動線短、理解成本低。',
@@ -234,9 +240,7 @@ export const UiUxCard: React.FC = () => {
            </ul>
          </div>
          <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button className="flex-1 bg-gray-900 text-white py-3 px-6 rounded-xl font-medium hover:bg-black transition-colors flex items-center justify-center gap-2 text-sm">
-              View Case Study <ArrowRight size={16} />
-            </button>
+            {/* Removed 'View Case Study' Button as requested */}
             <button className="flex-1 bg-gray-100 text-gray-900 py-3 px-6 rounded-xl font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-sm">
               Live Prototype <ExternalLink size={16} />
             </button>
@@ -263,7 +267,8 @@ export const UiUxCard: React.FC = () => {
 
         {/* Preview Collage */}
         <div className="absolute bottom-0 right-0 left-0 h-64 bg-gradient-to-t from-gray-50 to-transparent"></div>
-        <div className="relative mt-4 grid grid-cols-2 gap-4 opacity-80 group-hover:opacity-100 transition-opacity">
+        {/* Opacity removed for visibility */}
+        <div className="relative mt-4 grid grid-cols-2 gap-4 transition-opacity">
             <div className="bg-blue-50 rounded-xl p-4 h-48 transform rotate-[-6deg] translate-y-4 shadow-lg border border-blue-100">
                 <div className="w-full h-4 bg-blue-200 rounded-full mb-2"></div>
                 <div className="w-2/3 h-4 bg-blue-200 rounded-full"></div>
