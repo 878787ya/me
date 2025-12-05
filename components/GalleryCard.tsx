@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
-import { Maximize2, X, ZoomIn } from 'lucide-react';
+import { Maximize2 } from 'lucide-react';
 import { ExpandedModal } from './ExpandedModal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards, Autoplay } from 'swiper/modules';
 
 // --- 請在這裡新增您的海報 ---
 const posters = [
+    // 建議將您的海報命名為 poster-01.webp, poster-02.webp ... 放在 assets/posters 資料夾中
     { src: 'assets/posters/poster-01.webp', title: 'Poster 1' },
     { src: 'assets/posters/poster-02.webp', title: 'Poster 2' },
     { src: 'assets/posters/poster-03.webp', title: 'Poster 3' },
     { src: 'assets/posters/poster-04.webp', title: 'Poster 4' },
     { src: 'assets/posters/poster-05.webp', title: 'Poster 5' },
-    { src: 'assets/posters/poster-06.webp', title: 'Poster 6' },
-    
-
 ];
 
 export const GalleryCard: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   return (
     <>
@@ -57,54 +54,32 @@ export const GalleryCard: React.FC = () => {
       </div>
 
       <ExpandedModal isOpen={isExpanded} onClose={() => setIsExpanded(false)}>
-        <div className="h-full w-full bg-gray-50 overflow-y-auto p-4 md:p-10">
+        <div className="h-full w-full bg-white overflow-y-auto p-4 md:p-10">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-8 text-center">
                     <h2 className="text-3xl font-bold text-gray-900 uppercase tracking-tight">Curated Gallery</h2>
                     <p className="text-gray-500 mt-2">A collection of posters and visual experiments.</p>
                 </div>
 
-                {/* Masonry Layout using CSS Columns */}
-                {/* This layout handles different aspect ratios (portrait/landscape) automatically */}
-                <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                {/* Simple Grid Layout (Evenly Placed, No special effects) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
                     {posters.map((p, i) => (
                         <div 
                             key={i} 
-                            onClick={() => setZoomImage(p.src)}
-                            className="break-inside-avoid rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
+                            className="flex flex-col gap-2"
                         >
                             <img 
                                 src={p.src} 
                                 alt={p.title} 
                                 loading="lazy"
                                 decoding="async"
-                                className="w-full h-auto block transform group-hover:scale-105 transition-transform duration-500" 
+                                className="w-full h-auto rounded-xl border border-gray-100 shadow-sm" 
                             />
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <div className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white">
-                                    <ZoomIn size={24} />
-                                </div>
-                            </div>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
-
-        {/* Simple Lightbox Overlay */}
-        {zoomImage && (
-            <div className="fixed inset-0 z-[150] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out" onClick={() => setZoomImage(null)}>
-                <button className="absolute top-6 right-6 text-white/70 hover:text-white">
-                    <X size={32} />
-                </button>
-                <img 
-                    src={zoomImage} 
-                    className="max-w-full max-h-full object-contain rounded shadow-2xl" 
-                    onClick={(e) => e.stopPropagation()} 
-                />
-            </div>
-        )}
       </ExpandedModal>
     </>
   );
