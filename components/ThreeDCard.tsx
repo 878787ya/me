@@ -6,7 +6,7 @@ import { ExpandedModal } from './ExpandedModal';
 const models: ModelData[] = [
   { 
     id: '1', 
-    src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', 
+    src: 'assets/models/ring.glb', 
     thumbnail: 'https://via.placeholder.com/50/F26444/FFFFFF?text=A', 
     color: 'bg-orange-500',
     title: '穿透環',
@@ -15,7 +15,7 @@ const models: ModelData[] = [
   },
   { 
     id: '2', 
-    src: 'https://modelviewer.dev/shared-assets/models/RobotExpressive.glb', 
+    src: 'assets/models/love.glb', 
     thumbnail: 'https://via.placeholder.com/50/6A4C93/FFFFFF?text=R', 
     color: 'bg-purple-500',
     title: '愛',
@@ -24,7 +24,7 @@ const models: ModelData[] = [
   },
   { 
     id: '3', 
-    src: 'https://modelviewer.dev/shared-assets/models/shishkebab.glb', 
+    src: 'assets/models/warning.glb', 
     thumbnail: 'https://via.placeholder.com/50/1982C4/FFFFFF?text=S', 
     color: 'bg-blue-500',
     title: '禁止泡湯',
