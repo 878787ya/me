@@ -241,9 +241,7 @@ export const UiUxCard: React.FC = () => {
          </div>
          <div className="pt-2 flex flex-col sm:flex-row gap-3">
             {/* Removed 'View Case Study' Button as requested */}
-            <button className="flex-1 bg-gray-100 text-gray-900 py-3 px-6 rounded-xl font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-sm">
-              Live Prototype <ExternalLink size={16} />
-            </button>
+
          </div>
       </div>
     </div>
