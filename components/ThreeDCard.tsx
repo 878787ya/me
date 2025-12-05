@@ -9,8 +9,8 @@ const models: ModelData[] = [
     src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', 
     thumbnail: 'https://via.placeholder.com/50/F26444/FFFFFF?text=A', 
     color: 'bg-orange-500',
-    title: '《穿透環》',
-    description: '以展場常見的道具式環狀裝置為基礎，重新製作成可觸碰、可收藏的小型配件。在保留原始造型特徵的同時，調整厚度與比例，使其能作為吊飾或迷你擺設帶回家使用。',
+    title: '穿透環',
+    description: '小時候最喜歡的哆啦 A 夢道具之一，把「穿牆而過」的想像做成了可以拿在手上的版本。模型裡放了磁鐵，不只是擺設，也可以吸在金屬上當作小吊飾或小玩具，算是把童年的一個小念頭做成能帶回家的東西。',
     software: ['Blender', 'Shapr3D']
   },
   { 
